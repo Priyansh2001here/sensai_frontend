@@ -15,7 +15,7 @@ const ViewAdmin = React.lazy(() => import("./pages/app/admin"));
 
 function App() {
   const {user} = useContext(AuthContext);
-
+// {user && user.isAdmin &&
   return (
     <Router>
       <Routes>
@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<MainView />} />
           <Route path="/app" element={<AppLayout />}>
             <Route path="user" element={<ViewUser />} />
-            {user && user.isAdmin && <Route path="admin" element={<ViewAdmin />} />}
+            <Route path="admin" element={<ViewAdmin />} />
           </Route>
         </Route>
         <Route path="*" element={<ErrorView />} />

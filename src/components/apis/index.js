@@ -88,3 +88,21 @@ export const getNewInviteCode = async () => {
 
     return response;
 }
+
+export const updateUser = async (updateData) => {
+    const response = {data: null, error: null};
+    try {
+
+        const {data} = await AXIOS.put(
+            `${process.env.REACT_APP_API_KEYS_SERVER_ROOT}/users/edit`,
+            updateData
+        );
+
+        response.data = data;
+
+    } catch (err) {
+        response.error = err.response;
+    }
+
+    return response;
+}

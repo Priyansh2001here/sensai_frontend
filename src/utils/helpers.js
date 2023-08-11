@@ -3,10 +3,11 @@ export function matchPath(path, key) {
 };
 
 export const updateLoginAlertMessageState = (error, stateSetter) => {
-  if (error.status === 400){
+  console.log(error.response.status)
+  if (error.response.status === 400){
     stateSetter('Malformed email or password')
   }
-  else if (error.status === 401){
+  else if (error.response.status === 401){
     stateSetter('Invalid Credentials')
   }
   // error.response.status === 500
@@ -16,13 +17,13 @@ export const updateLoginAlertMessageState = (error, stateSetter) => {
 }
 
 export const updateRegisterAlertMessageState = (error, stateSetter) => {
-  if (error.status === 400){
+  if (error.response.status === 400){
     stateSetter('Malformed email or password')
   }
-  else if (error.status === 404){
+  else if (error.response.status === 404){
     stateSetter('Invalid Invite Code')
   }
-  else if (error.status === 409){
+  else if (error.response.status === 409){
     stateSetter('User with this email already exists')
   }
   else{
