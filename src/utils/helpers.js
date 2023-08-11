@@ -17,12 +17,12 @@ export const updateLoginAlertMessageState = (error, stateSetter) => {
 }
 
 export const updateRegisterAlertMessageState = (error, stateSetter) => {
-  if (error.response.status === 400){
+  if (error.status === 404){
+    stateSetter('Invalid Invite Code')
+  }  else if (error.response.status === 400){
     stateSetter('Malformed email or password')
   }
-  else if (error.response.status === 404){
-    stateSetter('Invalid Invite Code')
-  }
+
   else if (error.response.status === 409){
     stateSetter('User with this email already exists')
   }
